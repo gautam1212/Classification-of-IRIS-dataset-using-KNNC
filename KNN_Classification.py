@@ -17,8 +17,8 @@ def Find_distance(val,i):
 
 def KNN():
     
+    # randomly shuffling dataset
     random.shuffle(dataset)
-    # print dataset
     train = dataset[:int(0.8*len(dataset))]
     test = dataset[int(0.8*len(dataset)):]
 
@@ -55,13 +55,6 @@ def KNN():
     for K in range(1,k_max):
         accuracy[K] += positive[K]*100.0/len(test)
 
-        # print (accuracy[k])
-
-    # Graph Plot
-    # plt.plot(kss,accuracy)
-    # plt.xlabel('K')
-    # plt.ylabel('accuracy')
-    # plt.show()
 
 def Data_Load():
     f = open('MNIST_Iris.txt')
@@ -85,6 +78,7 @@ def Data_Load():
 
 def main():
     Data_Load()
+
     runs = 10
     for i in range(0,runs):
         KNN()
@@ -92,7 +86,7 @@ def main():
     for K in range(1,k_max):
         accuracy[K] = accuracy[K]/runs
         kss[K]=K
-        print ("Accuracy is ", accuracy[K],"% for K-Value:",K)
+        print "Accuracy is ", accuracy[K],"% for K-Value:",K
     
     accuracy[0]=0.0
     # Graph Plot
